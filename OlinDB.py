@@ -1,27 +1,8 @@
 ######################################################################
 #
-# HOMEWORK 3
+# Database Project by Seungin Lyu and Danny Kang
 #
-# Due: Sun 3/17/19 23h59.
-#
-# Name: Danny Kang, Seungin Lyu
-#
-# Email: dong.kang@students.olin.edu, seungin.lyu@students.olin.edu
-#
-# Remarks, if any:
-#
-#
-######################################################################
-
-
-######################################################################
-#
-# Python 3 code
-#
-# Please fill in this file with your solutions and submit it
-#
-# The functions below are stubs that you should replace with your
-# own implementation.
+# OlinDB
 #
 ######################################################################
 import pyparsing as pp
@@ -397,5 +378,3 @@ def shell(db):
         if(create):
             print("Relation "+rName+ " created")
             db[rName] = r
-
-shell(sample_db)
