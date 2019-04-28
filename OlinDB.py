@@ -366,6 +366,25 @@ def convert_abstract_query(db, aq):
 def shell(db):
     print("Available tables:")
     [print("  " + k) for k in db.keys()]
+
+    userRole = None
+    # # login logic
+    # 1. Login
+    #     if user name?  (SELECT From user table)
+    #         if password ? (Select password from user table where passowrd = password)
+    #             login complete -> read role
+    #                 userRole = employee
+    #         else wrong password
+    #     else user does not exist
+    # 2. Create User 
+    #     user name? 
+    #         if already exists
+    #             retype
+    #         else
+    #             password
+    #                 role
+    #         (Insert (name, password, role) INTO user table)
+
     while(1):
         # receive input and process query
         s = input()

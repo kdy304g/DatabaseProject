@@ -16,9 +16,36 @@ ___
 
 ## Goal
     - Create a database assuming that we are running a used-car selling company and we need a database to manage the selling records for each employee
-      - Schema : Name of Employee, Number of Cars Sold, Revenue Generate, etc.
+      - Table 1 : Car Table
+        - Schema : Primary Key (cid), Car Name, Car Type, Car Price, Car Status, Car name, uid (employee name)
+      - Table 2 : User Table
+        - Schema : primary key (uid), username, password, roles (customer, employee, manager), revenue generated 
+      
+      Login :
+        - Create user (username, password, role) -> (INSERT INTO USER table (username, password, role))
+        -   login command : CarDB -d mydb -U myuser (SELECT from * user table WHERE id = , password = asfawf234)
+        - CarDB createUser danny 1q2w3e4r employee
+
+      ## Stretch
+      - Table 3 : Roles Table (customer, employee, manager, master)
+        - Schema : primary key (rid - role id), privileges
+          rid | role_name | privleges
+          1      Customer    buy (Car Table)
+          2      Employee    Read, Write (Car Table)
+          3      manager     Read, Write, Delete (Car Table, User Table)
+          4      master      Read, Write, Delete (Car Table, User Table, Roles Table)
+
+          - 1 : buy read + update(only car status) // our design decision
+          - 2 : write
+          - 3 : delete
+          - Customer : Buy
+          - Employee : Read, Write
+          - Manager : Read, Write, Delete
+  
     - Create roles (employee, manager, admin) that has appropriate read/write/delete/update privileges and roles.
     - Create login, logout, create user, create role, grant privilege, etc (postgreSQL style commands)
+        - https://alvinalexander.com/blog/post/postgresql/log-in-postgresql-database
+        - psql -d mydb -U myuser
 ___
 
 ## Initial Steps
