@@ -172,63 +172,63 @@ class Relation:
 CARS = Relation(["name", "type", "color", "price", "number sold"],
                  ["name"],
                  [
-                    ("Ford Explorer", "suv", "blue", "36675", "0"),
-                    ("Ford Escape", "suv", "white", "24105", "0"),
-                    ("Volkswagen Tiger", "suv", "red", "24295", "0"),
-                    ("Jeep Grand Cherokee", "suv", "red", "31945", "0"),
-                    ("Honda CR-V", "suv", "silver", "24350", "0"),
-                    ("Toyota RAV4", "suv", "space grey", "25500", "0"),
-                    ("Toyota Highlander", "suv", "sky blue", "31530", "0"),
-                    ("Kia Sorento", "suv", "black", "26290", "0"),
-                    ("Ford Expedition", "suv", "black", "52130", "0"),
-                    ("Chevrolet Equinox", "suv", "white", "24295", "0"),
-                    ("Toyota Camry", "sedan", "white", "23945", "0"),
-                    ("Ford Fusion", "sedan", "white", "22840", "0"),
-                    ("Nissan Altima", "sedan", "white", "23900", "0"),
-                    ("Honda Accord", "sedan", "black", "23720", "0"),
-                    ("Toyota Camry", "sedan", "white", "23945", "0"),
-                    ("Hyundai Sonata", "sedan", "blue", "22500", "0"),
-                    ("Hyundai Elantra", "sedan", "white", "17200", "0"),
-                    ("Subaru Legacy", "sedan", "white", "22545", "0"),
-                    ("Audi A4", "sedan", "grey", "37400", "0"),
-                    ("Toyota Corolla", "sedan", "black", "19500", "0"),
-                    ("Ford Mustang", "coupe", "green", "26395","0"),
-                    ("Dodge Challenger", "coupe", "grey", "27845","0"),
-                    ("Chevrolet Camaro", "coupe", "gold", "25000","0"),
-                    ("Honda Civic", "coupe", "blue", "19450","0"),
-                    ("Porsche 911", "coupe", "white", "113300","0"),
-                    ("Lexus RC", "coupe", "black", "64750","0"),
-                    ("Audi S5", "coupe", "white", "52400","0"),
-                    ("Toyota 86", "coupe", "black", "26505","0"),
-                    ("BMW 4series", "coupe", "blue", "44750","0"),
-                    ("Infiniti Q60", "coupe", "grey", "40750","0")
+                    ("Ford Explorer", "suv", "blue", 36675, 0),
+                    ("Ford Escape", "suv", "white", 24105, 0),
+                    ("Volkswagen Tiger", "suv", "red", 24295, 0),
+                    ("Jeep Grand Cherokee", "suv", "red", 31945, 0),
+                    ("Honda CR-V", "suv", "silver", 24350, 0),
+                    ("Toyota RAV4", "suv", "space grey", 25500, 0),
+                    ("Toyota Highlander", "suv", "sky blue", 31530, 0),
+                    ("Kia Sorento", "suv", "black", 26290, 0),
+                    ("Ford Expedition", "suv", "black", 52130, 0),
+                    ("Chevrolet Equinox", "suv", "white", 24295, 0),
+                    ("Toyota Camry", "sedan", "white", 23945, 0),
+                    ("Ford Fusion", "sedan", "white", 22840, 0),
+                    ("Nissan Altima", "sedan", "white", 23900, 0),
+                    ("Honda Accord", "sedan", "black", 23720, 0),
+                    ("Toyota Camry", "sedan", "white", 23945, 0),
+                    ("Hyundai Sonata", "sedan", "blue", 22500, 0),
+                    ("Hyundai Elantra", "sedan", "white", 17200, 0),
+                    ("Subaru Legacy", "sedan", "white", 22545, 0),
+                    ("Audi A4", "sedan", "grey", "37400", 0),
+                    ("Toyota Corolla", "sedan", "black", 19500, 0),
+                    ("Ford Mustang", "coupe", "green", 26395, 0),
+                    ("Dodge Challenger", "coupe", "grey", 27845, 0),
+                    ("Chevrolet Camaro", "coupe", "gold", 25000, 0),
+                    ("Honda Civic", "coupe", "blue", 19450, 0),
+                    ("Porsche 911", "coupe", "white", 113300,0),
+                    ("Lexus RC", "coupe", "black", 64750,0),
+                    ("Audi S5", "coupe", "white", 52400,0),
+                    ("Toyota 86", "coupe", "black", 26505,0),
+                    ("BMW 4series", "coupe", "blue", 44750,0),
+                    ("Infiniti Q60", "coupe", "grey", 40750,0)
 
 ])
 
 # number of cars sold is list of tuples in form [(car name, number of sold), ...]
-PERSONS = Relation(["name", "id", "password", "role", "number of cars sold", "sales"],
+USERS = Relation(["name", "id", "password", "role", "number of cars sold", "sales"],
                    ["id"],
                    [
-                        ("Danny", "0", "1234", "Admin", None, None),
-                        ("Seungin", "1", "1234", "Admin", None, None),
-                        ("Sam", "2", "1234", "Manager", None, None),
-                        ("Derek", "3", "1234", "Manager", None, None),
-                        ("Tracy", "4", "1234", "Manager", None, None),
-                        ("Alex", "5", "1234", "Employee", [], "0"),
-                        ("Chris", "6", "1234", "Employee", [], "0"),
-                        ("Paul", "7", "1234", "Employee", [], "0"),
-                        ("James", "8", "1234", "Employee", [], "0"),
-                        ("Jessica", "9", "1234", "Employee", [], "0"),
-                        ("Caleb", "10", "1234", "Employee", [], "0"),
-                        ("Suzy", "11", "1234", "Employee", [], "0"),
-                        ("Michael", "12", "1234", "Employee", [], "0"),
-                        ("Edurdo", "13", "1234", "Employee", [], "0"),
-                        ("Jack", "14", "1234", "Employee", [], "0"),
-                        ("Nathan", None, None, "Customer", None, None),
-                        ("Franklin", None, None, "Customer", None, None),
-                        ("Max", None, None, "Customer", None, None),
-                        ("Margo", None, None, "Customer", None, None),
-                        ("Nick", None, None, "Customer", None, None),
+                        ("Danny", "0", "1234", "Admin", 0, 0),
+                        ("Seungin", "1", "1234", "Admin", 0, 0),
+                        ("Sam", "2", "1234", "Manager", 0, 0),
+                        ("Derek", "3", "1234", "Manager", 0, 0),
+                        ("Tracy", "4", "1234", "Manager", 0, 0),
+                        ("Alex", "5", "1234", "Employee", 0, 0),
+                        ("Chris", "6", "1234", "Employee", 0, 0),
+                        ("Paul", "7", "1234", "Employee", 0, 0),
+                        ("James", "8", "1234", "Employee", 0, 0),
+                        ("Jessica", "9", "1234", "Employee", 0, 0),
+                        ("Caleb", "10", "1234", "Employee", 0, 0),
+                        ("Suzy", "11", "1234", "Employee", 0, 0),
+                        ("Michael", "12", "1234", "Employee", 0, 0),
+                        ("Edurdo", "13", "1234", "Employee", 0, 0),
+                        ("Jack", "14", "1234", "Employee", 0, 0),
+                        ("Nathan", "15", "1234", "Customer", 0, 0),
+                        ("Franklin", "16", "1234", "Customer", 0, 0),
+                        ("Max", "17", "1234", "Customer", 0, 0),
+                        ("Margo", "18", "1234", "Customer", 0, 0),
+                        ("Nick", "19", "1234", "Customer", 0, 0)
 
 ])
 
@@ -347,9 +347,9 @@ def parseQuery(input):
 
 
 sample_db = {
-    "Books": BOOKS,
-    "Persons": PERSONS,
-    "AuthoredBy": AUTHORED_BY
+    "Cars": CARS,
+    "Users": USERS,
+    "SoldBy": SOLD_BY
 }
 
 
@@ -361,29 +361,62 @@ def convert_abstract_query(db, aq):
     }
     return q
 
+Role_Table = {
+    "Admin": ["Create", "Delete", "Read", "Modify"],
+    "Manager": [],
+    "Employee": [],
+    "Customer": []
+}
 
 # Repeatedly read a line of input, parse it, and evaluate the result
 def shell(db):
     print("Available tables:")
     [print("  " + k) for k in db.keys()]
-
+    print("-----------------Weclome to OlinUsedCar------------------")
+    print("Select from menu")
+    print("1. Login \n2. Create New Account")
+    print()
+    option = input("Choose from menu: ")
     userRole = None
-    # # login logic
-    # 1. Login
-    #     if user name?  (SELECT From user table)
-    #         if password ? (Select password from user table where passowrd = password)
-    #             login complete -> read role
-    #                 userRole = employee
-    #         else wrong password
-    #     else user does not exist
-    # 2. Create User 
-    #     user name? 
-    #         if already exists
-    #             retype
-    #         else
-    #             password
-    #                 role
-    #         (Insert (name, password, role) INTO user table)
+    loginStatus = False
+# Log in
+    if option == "1":
+        while(userRole == None):
+            userID = input("Enter your ID: ")
+            try:
+                userInfo = USERS.read_tuple((userID,))
+                userRole = userInfo[3]
+                while not loginStatus:
+                    password = input("Enter your password: ")
+                    if userInfo[2] == password:
+                        print("Log in success!")
+                        loginStatus = True
+                    else:
+                        print("Wrong password!")
+            except:
+                print("Enter correct ID please")
+# Create new account
+    elif option == "2":
+        userRole = input("Enter your role: ")
+        userName = input("Enter your name: ")
+        while not loginStatus:
+            userID = input("Enter your ID: ")
+            try:
+                USERS.read_tuple((userID,))
+                print("That ID already exists! Please try again.")
+            except:
+                loginStatus = True
+        password = input(f"Enter your password for your ID {userID}: ")
+        userInfo = (userName, userID, password, userRole, 0, 0)
+        # print(userInfo)
+        USERS.create_tuple(userInfo)
+        # print(USERS)
+
+    print("provide additioanl menu options")
+# different menu for different roles?
+# or just enter queries regardless of roles?
+# if so, how to control queries according to roles?
+
 
     while(1):
         # receive input and process query
@@ -404,3 +437,5 @@ def shell(db):
         if(create):
             print("Relation "+rName+ " created")
             db[rName] = r
+shell(sample_db)
+# print(USERS.read_tuple("0"))
