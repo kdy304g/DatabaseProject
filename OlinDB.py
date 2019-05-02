@@ -362,10 +362,9 @@ def convert_abstract_query(db, aq):
     return q
 
 Role_Table = {
-    "Admin": ["Create", "Delete", "Read", "Modify"],
-    "Manager": [],
-    "Employee": [],
-    "Customer": []
+    "Manager": ["Create", "Read", "Update", "Delete"],
+    "Employee": ["Read", "Update"],
+    "Customer": ["Read"]
 }
 
 # Repeatedly read a line of input, parse it, and evaluate the result
