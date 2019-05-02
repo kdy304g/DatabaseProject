@@ -209,8 +209,8 @@ CARS = Relation(["name", "type", "color", "price", "number sold"],
 USERS = Relation(["name", "id", "password", "role", "number of cars sold", "sales"],
                    ["id"],
                    [
-                        ("Danny", "0", "1234", "Admin", 0, 0),
-                        ("Seungin", "1", "1234", "Admin", 0, 0),
+                        ("Danny", "kdy304g", "1234", "Manager", 0, 0),
+                        ("Seungin", "teamoji", "1234", "Manager", 0, 0),
                         ("Sam", "2", "1234", "Manager", 0, 0),
                         ("Derek", "3", "1234", "Manager", 0, 0),
                         ("Tracy", "4", "1234", "Manager", 0, 0),
@@ -369,72 +369,203 @@ Role_Table = {
 
 # Repeatedly read a line of input, parse it, and evaluate the result
 def shell(db):
-    print("Available tables:")
-    [print("  " + k) for k in db.keys()]
-    print("-----------------Weclome to OlinUsedCar------------------")
-    print("Select from menu")
-    print("1. Login \n2. Create New Account")
-    print()
-    option = input("Choose from menu: ")
-    userRole = None
-    loginStatus = False
-# Log in
-    if option == "1":
-        while(userRole == None):
-            userID = input("Enter your ID: ")
-            try:
-                userInfo = USERS.read_tuple((userID,))
-                userRole = userInfo[3]
-                while not loginStatus:
-                    password = input("Enter your password: ")
-                    if userInfo[2] == password:
-                        print("Log in success!")
-                        loginStatus = True
-                    else:
-                        print("Wrong password!")
-            except:
-                print("Enter correct ID please")
-# Create new account
-    elif option == "2":
-        userRole = input("Enter your role: ")
-        userName = input("Enter your name: ")
-        while not loginStatus:
-            userID = input("Enter your ID: ")
-            try:
-                USERS.read_tuple((userID,))
-                print("That ID already exists! Please try again.")
-            except:
-                loginStatus = True
-        password = input(f"Enter your password for your ID {userID}: ")
-        userInfo = (userName, userID, password, userRole, 0, 0)
-        # print(userInfo)
-        USERS.create_tuple(userInfo)
-        # print(USERS)
+    while(True):
+        print("-----------------Weclome to Danny&Seungin InCO------------------")
+        print()
+        print("1. Login \n2. Create New Account")
+        print()
+        print("----------------------------------------------------------------")
+        print()
+        option = input("Choose from menu: ")
+        userRole = None
+        loginStatus = False
+    # Log in
+        if option == "1":
+            while(userRole == None):
+                userID = input("Enter your ID: ")
+                try:
+                    userInfo = USERS.read_tuple((userID,))
+                    userRole = userInfo[3]
+                    while not loginStatus:
+                        password = input("Enter your password: ")
+                        if userInfo[2] == password:
+                            # print("Log in success!")
+                            loginStatus = True
+                        else:
+                            print("Wrong password!")
+                except:
+                    print("Enter correct ID please")
+    # Create new account
+        elif option == "2":
+            userRole = input("Enter your role: ")
+            userName = input("Enter your name: ")
+            while not loginStatus:
+                userID = input("Enter your ID: ")
+                try:
+                    USERS.read_tuple((userID,))
+                    print("That ID already exists! Please try again.")
+                except:
+                    loginStatus = True
+            password = input(f"Enter your password for your ID {userID}: ")
+            userInfo = (userName, userID, password, userRole, 0, 0)
+            # print(userInfo)
+            USERS.create_tuple(userInfo)
+            # print(USERS)
+        print()
+        print("Log in success!")
+        print()
+        
+        if userRole == 'Manager':
+            while(True):
+                print("Available tables:")
+                [print("  " + k) for k in db.keys()]
+                print()
+                table = input("Choose table to operate CRUD operations: ")
+                data = sample_db[table]
+                print(data)
+                print("----------------------------Menu----------------------------")
+                print()
+                print("1.Create")
+                print("2.Read")
+                print("3.Update")
+                print("4.Delete")
+                print("5.Quit")
+                print("------------------------------------------------------------")
+                print()
+                option = input("Choose from menu: ")
+                if option == "1":
+                    if data == CARS:
+                        carName = input("Enter name of the car: ")
+                        carType = input("Enter type of the car: ")
+                        carColor = input("Enter color of the car: ")
+                        carPrice = input("Enter price of the car: ")
+                        print("new car created in relation Cars!")
+                        CARS.create_tuple((carName, carType, carColor, carPrice, 0))
 
-    print("provide additioanl menu options")
-# different menu for different roles?
-# or just enter queries regardless of roles?
-# if so, how to control queries according to roles?
+                    elif data == USERS:
+                        # ["name", "id", "password", "role", "number of cars sold", "sales"]
+                        userName = input("Enter name of the user: ")
+                        userID = input("Enter ID of user: ")
+                        userPassword = input("Enter password of user: ")
+                        userRole = input("Enter role of the user: ")
+                        print("new user created in relations Persons!")
+                        USERS.create_tuple((userName, userID, userPassword, userRole, 0, 0))
+
+                elif option == "2":
+                    pkey = input("Enter primary key of data that you want to view: ")
+                    try:
+                        print(data.read_tuple((pkey,)))
+                        print()
+                    except: 
+                        print("Wrong key!\n")
+                elif option == "3":
+                    pkey = input("Enter primary key of data that you want to update: ")
+                    try:
+                        data.delete_tuple((pkey,))
+                        if data == CARS:
+                            carName = input("Enter name of the car: ")
+                            carType = input("Enter type of the car: ")
+                            carColor = input("Enter color of the car: ")
+                            carPrice = input("Enter price of the car: ")
+                            print("%s updated!" %pkey)
+                            CARS.create_tuple((carName, carType, carColor, carPrice, 0))
+
+                        elif data == USERS:
+                            # ["name", "id", "password", "role", "number of cars sold", "sales"]
+                            userName = input("Enter name of the user: ")
+                            userID = input("Enter ID of user: ")
+                            userPassword = input("Enter password of user: ")
+                            userRole = input("Enter role of the user: ")
+                            print("%s updated!" %pkey)
+                            USERS.create_tuple((userName, userID, userPassword, userRole, 0, 0))
+
+                    except:
+                        print("Wrong key! Please try again\n")
+                elif option == "4":
+                    pkey = input("Enter primary key of data that you want to delete: ")
+                    try:
+                        data.delete_tuple((pkey,))
+                        print("%s is now deleted!" %pkey)
+                    except:
+                        print("Wrong key!\n")
+                elif option == "5":
+                    break
+        elif userRole == 'Employee':
+            while(True):
+                print("1.Read")
+                print("2.Update")
+                print("3.Quit")
+                print()
+                print("------------------------------------------------------------")
+                print()
+                option = input("Choose from menu: ")
+                if option == "1":
+                    pkey = input("Enter primary key of data that you want to view: ")
+                    try:
+                        print(data.read_tuple((pkey,)))
+                        print()
+                    except: 
+                        print("Wrong key!\n")
+                elif option == "2":
+                    pkey = input("Enter primary key of data that you want to update: ")
+                    try:
+                        data.delete_tuple((pkey,))
+                        if data == CARS:
+                            carName = input("Enter name of the car: ")
+                            carType = input("Enter type of the car: ")
+                            carColor = input("Enter color of the car: ")
+                            carPrice = input("Enter price of the car: ")
+                            print("%s updated!" %pkey)
+                            CARS.create_tuple((carName, carType, carColor, carPrice, 0))
+
+                        elif data == USERS:
+                            # ["name", "id", "password", "role", "number of cars sold", "sales"]
+                            userName = input("Enter name of the user: ")
+                            userID = input("Enter ID of user: ")
+                            userPassword = input("Enter password of user: ")
+                            userRole = input("Enter role of the user: ")
+                            print("%s updated!" %pkey)
+                            USERS.create_tuple((userName, userID, userPassword, userRole, 0, 0))
+
+                    except:
+                        print("Wrong key! Please try again\n")
+                elif option == "3":
+                    break
+        elif userRole == 'Customer':
+            while(True):
+                print("1.View Car")
+                print("2.Quit")
+                print()
+                print("------------------------------------------------------------")
+                print()
+                option = input("Choose from menu: ")
+                if option == "1":
+                    print(CARS)
+                elif option == "2":
+                    break
+                # carName = input("Enter name of car that you want to view: ")
 
 
-    while(1):
-        # receive input and process query
-        s = input()
-        c = s.find(':')
-        # if colon identifier exists
-        if(c > -1):
-            create = True
-            rName = s.split(':')[0]
-            s = s[c+1::]
-        else:
-            create = False
 
-        aq = parseQuery(s)
-        q = convert_abstract_query(db, aq)
-        r = evaluate_query(q)
-        print(r)
-        if(create):
-            print("Relation "+rName+ " created")
-            db[rName] = r
+
+    # while(1):
+    #     # receive input and process query
+    #     s = input()
+    #     c = s.find(':')
+    #     # if colon identifier exists
+    #     if(c > -1):
+    #         create = True
+    #         rName = s.split(':')[0]
+    #         s = s[c+1::]
+    #     else:
+    #         create = False
+
+    #     aq = parseQuery(s)
+    #     q = convert_abstract_query(db, aq)
+    #     r = evaluate_query(q)
+    #     print(r)
+    #     if(create):
+    #         print("Relation "+rName+ " created")
+    #         db[rName] = r
 shell(sample_db)
 # print(USERS.read_tuple("0"))
