@@ -6,7 +6,7 @@
 #
 ######################################################################
 import pyparsing as pp
-
+import getpass
 
 class Relation:
 
@@ -369,8 +369,9 @@ Role_Table = {
 
 # Repeatedly read a line of input, parse it, and evaluate the result
 def shell(db):
+
     while(True):
-        print("-----------------Weclome to Danny&Seungin InCO------------------")
+        print("-----------------Weclome to Danny&Seungin Car Sales------------------")
         print()
         print("1. Login \n2. Create New Account")
         print()
@@ -379,7 +380,7 @@ def shell(db):
         option = input("Choose from menu: ")
         userRole = None
         loginStatus = False
-    # Log in
+        # Log in
         if option == "1":
             while(userRole == None):
                 userID = input("Enter your ID: ")
@@ -387,15 +388,15 @@ def shell(db):
                     userInfo = USERS.read_tuple((userID,))
                     userRole = userInfo[3]
                     while not loginStatus:
-                        password = input("Enter your password: ")
+                        password = getpass.getpass('Password:')
                         if userInfo[2] == password:
-                            # print("Log in success!")
+                            print("Log in success!")
                             loginStatus = True
                         else:
                             print("Wrong password!")
                 except:
-                    print("Enter correct ID please")
-    # Create new account
+                    print("User with given userID does not exist")
+        # Create new account
         elif option == "2":
             userRole = input("Enter your role: ")
             userName = input("Enter your name: ")
@@ -406,14 +407,11 @@ def shell(db):
                     print("That ID already exists! Please try again.")
                 except:
                     loginStatus = True
-            password = input(f"Enter your password for your ID {userID}: ")
+            password = getpass.getpass('Enter you Password:')
             userInfo = (userName, userID, password, userRole, 0, 0)
-            # print(userInfo)
+            print("logged in as ", userID)
             USERS.create_tuple(userInfo)
             # print(USERS)
-        print()
-        print("Log in success!")
-        print()
         
         if userRole == 'Manager':
             while(True):
