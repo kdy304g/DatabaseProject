@@ -398,7 +398,7 @@ def shell(db):
             print("logged in as", userID)
             USERS.create_tuple(userInfo)
 
-        
+
         # after creating an account and logged in
 
         if userRole == 'Manager':
@@ -434,7 +434,7 @@ def shell(db):
                         userRole = input("Enter role of the user: ")
                         print("new user created in relations Persons!")
                         uid = len(USERS.tuples())+1
-                        USERS.create_tuple((uid, userName, userID, userPassword, userRole, 0, 0))
+                        USERS.create_tuple((userID, userName, userPassword, userRole))
 
                 elif option == "2":
                     # todo: accept any query
@@ -488,15 +488,15 @@ def shell(db):
             while(True):
                 print("1.Read")
                 print("2.Update")
-<<<<<<< HEAD:OlinDB.py
+# <<<<<<< HEAD:OlinDB.py
                 print("3.Quit")
                 print()
                 print("-------------------------------------------------------------------")
                 print()
-=======
-                print("3.Quit\n")
-                print("------------------------------------------------------------\n")
->>>>>>> 4f6b37731319634e05224fdb7a143f2d49f73070:CarSalesDB.py
+# =======
+                # print("3.Quit\n")
+                # print("------------------------------------------------------------\n")
+# >>>>>>> 4f6b37731319634e05224fdb7a143f2d49f73070:CarSalesDB.py
                 option = input("Choose from menu: ")
                 if option == "1":
                     try:
@@ -526,7 +526,7 @@ def shell(db):
                             userPassword = input("Enter password of user: ")
                             userRole = input("Enter role of the user: ")
                             print("%s updated!" %pkey)
-                            USERS.create_tuple((userName, userID, userPassword, userRole, 0, 0))
+                            USERS.create_tuple((userID, userName, userPassword, userRole))
 
                     except:
                         print("Wrong key! Please try again\n")

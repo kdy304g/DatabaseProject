@@ -59,7 +59,14 @@ ___
 [Roles](https://www.postgresql.org/docs/9.3/user-manag.html?fbclid=IwAR0jK_Eyxgy3Z6d_naechy-3Tk-atcay_8CQNJSCTpLU7X9-Ddt10DzJj5s)
 
 [Privileges](https://www.postgresql.org/docs/9.3/ddl-priv.html)
+___
 
 ## Implementation
 
 ![Alt text](./DBimage.png?raw=true "Title")
+We implemented our program based on command line interface. There are no fancy GUI or pop up features but still, this program manages to provide pretty straightforward and intuitive user experience in terms of navigation and, most importantly, data management. In fact, our program is partly based on homework3 of this course so credits to our instructor Riccardo! We made use of class 'Relation' and some of its methods like 'read/create tuple' to implement database and core functionalities. Our main focus, though, was to implement different **roles** that have varying level of access to data. 
+
+### Roles and privilleges
+* Manager
+* Employee
+* Customer
