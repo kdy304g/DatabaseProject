@@ -6,6 +6,7 @@
 #
 ######################################################################
 import pyparsing as pp
+import getpass
 
 
 class Relation:
@@ -394,10 +395,23 @@ def shell(db):
                         else:
                             print("Wrong password!")
                 except:
-                    print("Enter correct ID please")
+                    print("User with given userID does not exist")
     # Create new account
         elif option == "2":
-            userRole = input("Enter your role: ")
+            while(True):
+                userRole = input("Enter your role: 1 -> Manager, 2-> Employee, 3-> Customer\n")
+                # this prevents users from entering the wrong role type
+                if userRole == '1':
+                    userRole = 'Manager'
+                    break
+                elif userRole == '2':
+                    userRole = 'Employee'
+                    break
+                elif userRole == '3':
+                    userRole = 'Customer'
+                    break
+                print("Invalid Role, please choose from option 1,2,3")
+
             userName = input("Enter your name: ")
             while not loginStatus:
                 userID = input("Enter your ID: ")
@@ -406,7 +420,7 @@ def shell(db):
                     print("That ID already exists! Please try again.")
                 except:
                     loginStatus = True
-            password = input(f"Enter your password for your ID {userID}: ")
+            password = getpass.getpass('Enter you Password:')
             userInfo = (userName, userID, password, userRole, 0, 0)
             # print(userInfo)
             USERS.create_tuple(userInfo)
@@ -414,7 +428,7 @@ def shell(db):
         print()
         print("Log in success!")
         print()
-        
+
         if userRole == 'Manager':
             while(True):
                 print("Available tables:")
@@ -456,7 +470,7 @@ def shell(db):
                     try:
                         print(data.read_tuple((pkey,)))
                         print()
-                    except: 
+                    except:
                         print("Wrong key!\n")
                 elif option == "3":
                     pkey = input("Enter primary key of data that you want to update: ")
@@ -504,7 +518,7 @@ def shell(db):
                     try:
                         print(data.read_tuple((pkey,)))
                         print()
-                    except: 
+                    except:
                         print("Wrong key!\n")
                 elif option == "2":
                     pkey = input("Enter primary key of data that you want to update: ")
@@ -533,14 +547,25 @@ def shell(db):
                     break
         elif userRole == 'Customer':
             while(True):
-                print("1.View Car")
+                print("1.Read")
                 print("2.Quit")
                 print()
-                print("------------------------------------------------------------")
+                print("-------------------------------------------------------------------")
                 print()
                 option = input("Choose from menu: ")
                 if option == "1":
-                    print(CARS)
+                    try:
+                        s = input("Input Select Query : \n")
+                        if(s.find("Users") != -1):
+                            print()
+                            print("Access Denied!!\n")
+                        else:
+                            aq = parseQuery(s)
+                            q = convert_abstract_query(db, aq)
+                            r = evaluate_query(q)
+                            print(r)
+                    except Exception:
+                        print("Invalid Query")
                 elif option == "2":
                     break
                 # carName = input("Enter name of car that you want to view: ")
