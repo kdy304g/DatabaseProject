@@ -101,17 +101,17 @@ Once the program launches, users can either **log in** or **create new account**
 ```
 option = input("Choose from menu: ")
 if option == "1":
-try:
-s = input("Input Select Query : \n")
-if(s.find("Users") != -1):
-print()
-print("Access Denied!!\n")
-else:
-aq = parseQuery(s)
-q = convert_abstract_query(db, aq)
-r = evaluate_query(q)
-print(r)
-except Exception:
-print("Invalid Query")
+    try:
+        s = input("Input Select Query : \n")
+        if(s.find("Users") != -1):
+            print()
+            print("Access Denied!!\n")
+        else:
+            aq = parseQuery(s)
+            q = convert_abstract_query(db, aq)
+            r = evaluate_query(q)
+            print(r)
+    except Exception:
+        print("Invalid Query")
 ```
 ___
