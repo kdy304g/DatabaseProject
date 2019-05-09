@@ -81,5 +81,25 @@ USERS = Relation(["name", "id", "password", "role", "number of cars sold", "sale
 [
 ("Danny", "kdy304g", "1234", "Manager", 0, 0),
 ("Seungin", "teamoji", "1234", "Manager", 0, 0),
-("Sam", "2", "1234", "Manager", 0, 0),
+("Sam", "2", "1234", "Manager", 0, 0)]
+```
+Whenever changes are made by either manager or employee, the changes are immediately reflected in the program within corresponding relation. Whereas operations such as create and delete completely create or delete a tupels, other operations partially affects some values within a designated tuple. 
+
+### User Experience(flow of execution)
+Once the program launches, users can either **log in** or **create new account**. Once the user inputs appropriate info to log in, "log in successful!" message appears and users can choose the **relation**  that they want to make changes. Once the choice is made, appropriate **menu** pops up according to different roles that users might have.  For example, while manager role can choose from any relations and any CRUD operations, customer role has severly limited  option. The detail of our implementation is that if customer attempts to view information of other users, "access denied"  message pops up to deny the user's attempt to view other users' private info such as password. Also, customers have to input select query to view data they want. 
+```
+option = input("Choose from menu: ")
+if option == "1":
+try:
+s = input("Input Select Query : \n")
+if(s.find("Users") != -1):
+print()
+print("Access Denied!!\n")
+else:
+aq = parseQuery(s)
+q = convert_abstract_query(db, aq)
+r = evaluate_query(q)
+print(r)
+except Exception:
+print("Invalid Query")
 ```
