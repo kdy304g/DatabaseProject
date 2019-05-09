@@ -1,13 +1,17 @@
 ######################################################################
 #
 # Database Project by Seungin Lyu and Danny Kang
-#
+# An Attempt to add roles and security
+# Lessone learned : Adding Roles is difficult
 # OlinDB
 #
 ######################################################################
 import pyparsing as pp
 import getpass
+<<<<<<< HEAD:CarSalesDB.py
 
+=======
+>>>>>>> 602ef2496bcae0026479ce3d2e46aa2d11dd5548:CarSalesDB.py
 
 class Relation:
 
@@ -170,77 +174,50 @@ class Relation:
         pass
 
 
-CARS = Relation(["name", "type", "color", "price", "number sold"],
-                 ["name"],
+CARS = Relation(["cid", "name", "type", "color", "price", "number_sold"],
+                 ["cid"],
                  [
-                    ("Ford Explorer", "suv", "blue", 36675, 0),
-                    ("Ford Escape", "suv", "white", 24105, 0),
-                    ("Volkswagen Tiger", "suv", "red", 24295, 0),
-                    ("Jeep Grand Cherokee", "suv", "red", 31945, 0),
-                    ("Honda CR-V", "suv", "silver", 24350, 0),
-                    ("Toyota RAV4", "suv", "space grey", 25500, 0),
-                    ("Toyota Highlander", "suv", "sky blue", 31530, 0),
-                    ("Kia Sorento", "suv", "black", 26290, 0),
-                    ("Ford Expedition", "suv", "black", 52130, 0),
-                    ("Chevrolet Equinox", "suv", "white", 24295, 0),
-                    ("Toyota Camry", "sedan", "white", 23945, 0),
-                    ("Ford Fusion", "sedan", "white", 22840, 0),
-                    ("Nissan Altima", "sedan", "white", 23900, 0),
-                    ("Honda Accord", "sedan", "black", 23720, 0),
-                    ("Toyota Camry", "sedan", "white", 23945, 0),
-                    ("Hyundai Sonata", "sedan", "blue", 22500, 0),
-                    ("Hyundai Elantra", "sedan", "white", 17200, 0),
-                    ("Subaru Legacy", "sedan", "white", 22545, 0),
-                    ("Audi A4", "sedan", "grey", "37400", 0),
-                    ("Toyota Corolla", "sedan", "black", 19500, 0),
-                    ("Ford Mustang", "coupe", "green", 26395, 0),
-                    ("Dodge Challenger", "coupe", "grey", 27845, 0),
-                    ("Chevrolet Camaro", "coupe", "gold", 25000, 0),
-                    ("Honda Civic", "coupe", "blue", 19450, 0),
-                    ("Porsche 911", "coupe", "white", 113300,0),
-                    ("Lexus RC", "coupe", "black", 64750,0),
-                    ("Audi S5", "coupe", "white", 52400,0),
-                    ("Toyota 86", "coupe", "black", 26505,0),
-                    ("BMW 4series", "coupe", "blue", 44750,0),
-                    ("Infiniti Q60", "coupe", "grey", 40750,0)
+                    (1, "Ford Explorer", "suv", "blue", 36675, 0),
+                    (2, "Ford Escape", "suv", "white", 24105, 0),
+                    (3, "Volkswagen Tiger", "suv", "red", 24295, 0),
+                    (4, "Jeep Grand Cherokee", "suv", "red", 31945, 0),
+                    (5, "Honda CR-V", "suv", "silver", 24350, 0),
+                    (6, "Toyota RAV4", "suv", "space grey", 25500, 0),
+                    (7, "Toyota Highlander", "suv", "sky blue", 31530, 0),
+                    (8, "Kia Sorento", "suv", "black", 26290, 0),
+                    (9, "Ford Expedition", "suv", "black", 52130, 0),
+                    (10, "Chevrolet Equinox", "suv", "white", 24295, 0),
+                    (11, "Toyota Camry", "sedan", "white", 23945, 0),
+                    (12, "Ford Fusion", "sedan", "white", 22840, 0),
+                    (13, "Nissan Altima", "sedan", "white", 23900, 0),
+                    (14, "Honda Accord", "sedan", "black", 23720, 0),
+                    (15, "Toyota Camry", "sedan", "white", 23945, 0),
+                    (16, "Hyundai Sonata", "sedan", "blue", 22500, 0),
+                    (17, "Hyundai Elantra", "sedan", "white", 17200, 0),
+                    (18, "Subaru Legacy", "sedan", "white", 22545, 0),
+                    (19, "Audi A4", "sedan", "grey", "37400", 0),
+                    (20, "Toyota Corolla", "sedan", "black", 19500, 0),
+                    (21, "Ford Mustang", "coupe", "green", 26395, 0),
+                    (22, "Dodge Challenger", "coupe", "grey", 27845, 0),
+                    (23, "Chevrolet Camaro", "coupe", "gold", 25000, 0),
+                    (24, "Honda Civic", "coupe", "blue", 19450, 0),
+                    (25, "Porsche 911", "coupe", "white", 113300,0),
+                    (26, "Lexus RC", "coupe", "black", 64750,0),
+                    (27, "Audi S5", "coupe", "white", 52400,0),
+                    (28, "Toyota 86", "coupe", "black", 26505,0),
+                    (29, "BMW 4series", "coupe", "blue", 44750,0),
+                    (30, "Infiniti Q60", "coupe", "grey", 40750,0)
 
 ])
 
-# number of cars sold is list of tuples in form [(car name, number of sold), ...]
-USERS = Relation(["name", "id", "password", "role", "number of cars sold", "sales"],
+USERS = Relation(["id", "password", "name", "role"],
                    ["id"],
                    [
-                        ("Danny", "kdy304g", "1234", "Manager", 0, 0),
-                        ("Seungin", "teamoji", "1234", "Manager", 0, 0),
-                        ("Sam", "2", "1234", "Manager", 0, 0),
-                        ("Derek", "3", "1234", "Manager", 0, 0),
-                        ("Tracy", "4", "1234", "Manager", 0, 0),
-                        ("Alex", "5", "1234", "Employee", 0, 0),
-                        ("Chris", "6", "1234", "Employee", 0, 0),
-                        ("Paul", "7", "1234", "Employee", 0, 0),
-                        ("James", "8", "1234", "Employee", 0, 0),
-                        ("Jessica", "9", "1234", "Employee", 0, 0),
-                        ("Caleb", "10", "1234", "Employee", 0, 0),
-                        ("Suzy", "11", "1234", "Employee", 0, 0),
-                        ("Michael", "12", "1234", "Employee", 0, 0),
-                        ("Edurdo", "13", "1234", "Employee", 0, 0),
-                        ("Jack", "14", "1234", "Employee", 0, 0),
-                        ("Nathan", "15", "1234", "Customer", 0, 0),
-                        ("Franklin", "16", "1234", "Customer", 0, 0),
-                        ("Max", "17", "1234", "Customer", 0, 0),
-                        ("Margo", "18", "1234", "Customer", 0, 0),
-                        ("Nick", "19", "1234", "Customer", 0, 0)
-
+                        ("kdy304g", "1234", "Danny", "Manager"),
+                        ("slyu", "1234", "Seungin", "Manager"),
+                        ("john1", "1234", "John", "Employee"),
+                        ("doe1", "1234", "Doe", "Customer")
 ])
-
-
-SOLD_BY = Relation(["name", "id"],
-                       ["name", "id"],
-                       [
-# relation that contains info about which and how many cars each employees sold
-
-])
-
 
 def evaluate_query(query):
 
@@ -349,8 +326,7 @@ def parseQuery(input):
 
 sample_db = {
     "Cars": CARS,
-    "Users": USERS,
-    "SoldBy": SOLD_BY
+    "Users": USERS
 }
 
 
@@ -370,8 +346,9 @@ Role_Table = {
 
 # Repeatedly read a line of input, parse it, and evaluate the result
 def shell(db):
+
     while(True):
-        print("-----------------Weclome to Danny&Seungin InCO------------------")
+        print("-----------------Weclome to Danny&Seungin Car Sales------------------")
         print()
         print("1. Login \n2. Create New Account")
         print()
@@ -380,7 +357,7 @@ def shell(db):
         option = input("Choose from menu: ")
         userRole = None
         loginStatus = False
-    # Log in
+        # Log in
         if option == "1":
             while(userRole == None):
                 userID = input("Enter your ID: ")
@@ -388,15 +365,19 @@ def shell(db):
                     userInfo = USERS.read_tuple((userID,))
                     userRole = userInfo[3]
                     while not loginStatus:
-                        password = input("Enter your password: ")
-                        if userInfo[2] == password:
-                            # print("Log in success!")
+                        password = getpass.getpass('Password:')
+                        if userInfo[1] == password:
+                            print("Log in success!")
                             loginStatus = True
                         else:
                             print("Wrong password!")
                 except:
                     print("User with given userID does not exist")
+<<<<<<< HEAD:CarSalesDB.py
     # Create new account
+=======
+        # Create new account
+>>>>>>> 602ef2496bcae0026479ce3d2e46aa2d11dd5548:CarSalesDB.py
         elif option == "2":
             while(True):
                 userRole = input("Enter your role: 1 -> Manager, 2-> Employee, 3-> Customer\n")
@@ -421,6 +402,7 @@ def shell(db):
                 except:
                     loginStatus = True
             password = getpass.getpass('Enter you Password:')
+<<<<<<< HEAD:CarSalesDB.py
             userInfo = (userName, userID, password, userRole, 0, 0)
             # print(userInfo)
             USERS.create_tuple(userInfo)
@@ -428,33 +410,39 @@ def shell(db):
         print()
         print("Log in success!")
         print()
+=======
+            userInfo = (userID, password, userName, userRole)
+            print("logged in as", userID)
+            USERS.create_tuple(userInfo)
+
+
+        # after creating an account and logged in
+>>>>>>> 602ef2496bcae0026479ce3d2e46aa2d11dd5548:CarSalesDB.py
 
         if userRole == 'Manager':
             while(True):
-                print("Available tables:")
-                [print("  " + k) for k in db.keys()]
-                print()
-                table = input("Choose table to operate CRUD operations: ")
-                data = sample_db[table]
-                print(data)
-                print("----------------------------Menu----------------------------")
-                print()
+                print("----------------------------Menu----------------------------\n")
                 print("1.Create")
                 print("2.Read")
                 print("3.Update")
                 print("4.Delete")
                 print("5.Quit")
-                print("------------------------------------------------------------")
-                print()
+                print("------------------------------------------------------------\n")
                 option = input("Choose from menu: ")
                 if option == "1":
+                    print("Available tables:")
+                    print([k for k in db.keys()])
+                    table = input("Choose table to operate CRUD operations: ")
+                    data = sample_db[table]
+                    print(data)
                     if data == CARS:
                         carName = input("Enter name of the car: ")
                         carType = input("Enter type of the car: ")
                         carColor = input("Enter color of the car: ")
                         carPrice = input("Enter price of the car: ")
                         print("new car created in relation Cars!")
-                        CARS.create_tuple((carName, carType, carColor, carPrice, 0))
+                        cid = len(CARS.tuples())+1
+                        CARS.create_tuple((cid, carName, carType, carColor, carPrice, 0))
 
                     elif data == USERS:
                         # ["name", "id", "password", "role", "number of cars sold", "sales"]
@@ -463,16 +451,33 @@ def shell(db):
                         userPassword = input("Enter password of user: ")
                         userRole = input("Enter role of the user: ")
                         print("new user created in relations Persons!")
-                        USERS.create_tuple((userName, userID, userPassword, userRole, 0, 0))
+                        uid = len(USERS.tuples())+1
+                        USERS.create_tuple((userID, userName, userPassword, userRole))
 
                 elif option == "2":
-                    pkey = input("Enter primary key of data that you want to view: ")
+                    # todo: accept any query
                     try:
+<<<<<<< HEAD:CarSalesDB.py
                         print(data.read_tuple((pkey,)))
                         print()
                     except:
                         print("Wrong key!\n")
+=======
+                        s = input("Input Select Query : \n")
+                        aq = parseQuery(s)
+                        q = convert_abstract_query(db, aq)
+                        r = evaluate_query(q)
+                        print(r)
+                    except Exception:
+                        print("Invalid Query")
+
+>>>>>>> 602ef2496bcae0026479ce3d2e46aa2d11dd5548:CarSalesDB.py
                 elif option == "3":
+                    print("Available tables:")
+                    print([k for k in db.keys()])
+                    table = input("Choose table to operate CRUD operations: ")
+                    data = sample_db[table]
+                    print(data)
                     pkey = input("Enter primary key of data that you want to update: ")
                     try:
                         data.delete_tuple((pkey,))
@@ -482,7 +487,7 @@ def shell(db):
                             carColor = input("Enter color of the car: ")
                             carPrice = input("Enter price of the car: ")
                             print("%s updated!" %pkey)
-                            CARS.create_tuple((carName, carType, carColor, carPrice, 0))
+                            CARS.create_tuple((pkey, carName, carType, carColor, carPrice, 0))
 
                         elif data == USERS:
                             # ["name", "id", "password", "role", "number of cars sold", "sales"]
@@ -491,7 +496,7 @@ def shell(db):
                             userPassword = input("Enter password of user: ")
                             userRole = input("Enter role of the user: ")
                             print("%s updated!" %pkey)
-                            USERS.create_tuple((userName, userID, userPassword, userRole, 0, 0))
+                            USERS.create_tuple((pkey, userName, userID, userPassword, userRole, 0, 0))
 
                     except:
                         print("Wrong key! Please try again\n")
@@ -508,18 +513,32 @@ def shell(db):
             while(True):
                 print("1.Read")
                 print("2.Update")
+# <<<<<<< HEAD:OlinDB.py
                 print("3.Quit")
                 print()
-                print("------------------------------------------------------------")
+                print("-------------------------------------------------------------------")
                 print()
+# =======
+                # print("3.Quit\n")
+                # print("------------------------------------------------------------\n")
+# >>>>>>> 4f6b37731319634e05224fdb7a143f2d49f73070:CarSalesDB.py
                 option = input("Choose from menu: ")
                 if option == "1":
-                    pkey = input("Enter primary key of data that you want to view: ")
                     try:
+<<<<<<< HEAD:CarSalesDB.py
                         print(data.read_tuple((pkey,)))
                         print()
                     except:
                         print("Wrong key!\n")
+=======
+                        s = input("Input Select Query : \n")
+                        aq = parseQuery(s)
+                        q = convert_abstract_query(db, aq)
+                        r = evaluate_query(q)
+                        print(r)
+                    except Exception:
+                        print("Invalid Query")
+>>>>>>> 602ef2496bcae0026479ce3d2e46aa2d11dd5548:CarSalesDB.py
                 elif option == "2":
                     pkey = input("Enter primary key of data that you want to update: ")
                     try:
@@ -539,7 +558,7 @@ def shell(db):
                             userPassword = input("Enter password of user: ")
                             userRole = input("Enter role of the user: ")
                             print("%s updated!" %pkey)
-                            USERS.create_tuple((userName, userID, userPassword, userRole, 0, 0))
+                            USERS.create_tuple((userID, userName, userPassword, userRole))
 
                     except:
                         print("Wrong key! Please try again\n")
@@ -557,8 +576,12 @@ def shell(db):
                     try:
                         s = input("Input Select Query : \n")
                         if(s.find("Users") != -1):
+<<<<<<< HEAD:CarSalesDB.py
                             print()
                             print("Access Denied!!\n")
+=======
+                            print("Access Denied")
+>>>>>>> 602ef2496bcae0026479ce3d2e46aa2d11dd5548:CarSalesDB.py
                         else:
                             aq = parseQuery(s)
                             q = convert_abstract_query(db, aq)
@@ -568,29 +591,6 @@ def shell(db):
                         print("Invalid Query")
                 elif option == "2":
                     break
-                # carName = input("Enter name of car that you want to view: ")
 
-
-
-
-    # while(1):
-    #     # receive input and process query
-    #     s = input()
-    #     c = s.find(':')
-    #     # if colon identifier exists
-    #     if(c > -1):
-    #         create = True
-    #         rName = s.split(':')[0]
-    #         s = s[c+1::]
-    #     else:
-    #         create = False
-
-    #     aq = parseQuery(s)
-    #     q = convert_abstract_query(db, aq)
-    #     r = evaluate_query(q)
-    #     print(r)
-    #     if(create):
-    #         print("Relation "+rName+ " created")
-    #         db[rName] = r
+# run shell
 shell(sample_db)
-# print(USERS.read_tuple("0"))
