@@ -62,4 +62,4 @@ ___
 
 ## Implementation
 
-![Alt text](relative/path/to/img.jpg?raw=true "Title")
+![Alt text](./DBimage.png?raw=true "Title")
