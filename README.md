@@ -59,3 +59,7 @@ ___
 [Roles](https://www.postgresql.org/docs/9.3/user-manag.html?fbclid=IwAR0jK_Eyxgy3Z6d_naechy-3Tk-atcay_8CQNJSCTpLU7X9-Ddt10DzJj5s)
 
 [Privileges](https://www.postgresql.org/docs/9.3/ddl-priv.html)
+
+## Implementation
+
+![Alt text](relative/path/to/img.jpg?raw=true "Title")

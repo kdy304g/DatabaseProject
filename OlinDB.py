@@ -496,7 +496,7 @@ def shell(db):
                 print("2.Update")
                 print("3.Quit")
                 print()
-                print("------------------------------------------------------------")
+                print("-------------------------------------------------------------------")
                 print()
                 option = input("Choose from menu: ")
                 if option == "1":
@@ -536,7 +536,7 @@ def shell(db):
                 print("1.View Car")
                 print("2.Quit")
                 print()
-                print("------------------------------------------------------------")
+                print("-------------------------------------------------------------------")
                 print()
                 option = input("Choose from menu: ")
                 if option == "1":
