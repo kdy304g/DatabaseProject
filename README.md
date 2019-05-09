@@ -69,9 +69,20 @@ We implemented our program based on command line interface. There are no fancy G
 ### Roles and privilleges
 Following is the list of roles and their privilleges. Essentially, there are 3 roles where manager has full power over manipulation of data, employees have limited power over data, and customers can only view limited data. This structure prevents roles with lower authority to change data, which is desirable as far as security is concerned. 
 
-* Manager: have access to create, read, update, and delete
-* Employee: have access to only read and update
-* Customer: have access to only read (but can not view certain data that are related to privacy such as the relation 'Users')
+* **Manager**: have access to create, read, update, and delete
+* **Employee**: have access to only read and update
+* **Customer**: have access to only read (but can not view certain data that are related to privacy such as the relation 'Users')
+
+### CRUD operations
+Following table summarizes the privilleges of each role in our program.
+```
+Role_Table = {
+"Manager": ["Create", "Read", "Update", "Delete"],
+"Employee": ["Read", "Update"],
+"Customer": ["Read"]
+}
+```
+Implementation of create, read, and delete operations were done directly using methods in the class 'Relation' that we implemented for homework3. So after program gets necessary input from users, the program gives those information as arguments to those methods to reflect expected changes in database. Update operation was implemented by using both delete_tuples and create_tuple so that the tuples that user wants to change is initially deleted and re-created with changed values. 
 
 ### Database
 The back-end of our program lies databases that are in form of several relations as shown below. 
@@ -103,3 +114,4 @@ print(r)
 except Exception:
 print("Invalid Query")
 ```
+___
