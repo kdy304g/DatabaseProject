@@ -576,12 +576,9 @@ def shell(db):
                     try:
                         s = input("Input Select Query : \n")
                         if(s.find("Users") != -1):
-<<<<<<< HEAD:CarSalesDB.py
                             print()
                             print("Access Denied!!\n")
-=======
                             print("Access Denied")
->>>>>>> 602ef2496bcae0026479ce3d2e46aa2d11dd5548:CarSalesDB.py
                         else:
                             aq = parseQuery(s)
                             q = convert_abstract_query(db, aq)
