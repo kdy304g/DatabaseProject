@@ -1,4 +1,4 @@
-# An OlinDB with Roles - Don't blow up your production DB on day1!
+# A Database with Roles - Don't blow up your production DB on day 1!
 Danny Kang, Seungin Lyu
 
 ## Inspiration
@@ -9,9 +9,50 @@ ___
 Summary : A dev intern at a startup company blew up the production database on day 1 after following the dev environment setup instructions (and accidentally used the production credentials that was used in the instruction).
 Incidents like this should be prevented from a systems level, so we are implementing a minimal database with users, roles, and privileges that will prevent any dumb mistake like presented in this Reddit thread.
 
+A few solutions we suggest :
+
+- Backup
+- Database Roles and Privileges
+- Row-Level Security
+- Stay away from
+  ```
+  DROP TABLE table_name;
+  DROP DATABASE database_name;
+  DELETE * FROM TABLE WHERE 1=1;
+  ```
+Please take a look at the [slides](https://docs.google.com/presentation/d/1REns_PbwlnRoOVgmzZO2bhEqes41cJcaX9RZv7D_DuU/edit?usp=sharing) we used for our final presentation for more details.
+
+## Roles
+Role: a database user, or a group of database users (depends on the setup)
+“Roles can own database objects (tables) and can assign privileges on those objects to other roles to control who has access to which objects” (PostgreSQL)
+```
+CREATE ROLE name; 
+DROP ROLE name;
+CREATE ROLE name LOGIN (CREATE USER name)
+GRANT group_role TO role1, ... ;
+REVOKE group_role FROM role1, ... ;
+
+```
+## Privileges
+```
+GRANT { { SELECT | INSERT | UPDATE | DELETE | RULE | REFERENCES | TRIGGER }
+    [,...] | ALL [ PRIVILEGES ] }
+    ON [ TABLE ] tablename [, ...]
+    TO { username | GROUP groupname | PUBLIC } [, ...] [ WITH GRANT OPTION ]
+
+```
+## Row-Level Security (RLS)
+  ### Concept
+  RLS supports two types of security predicates.
+  “Filter predicates silently filter the rows available to read operations (SELECT, UPDATE, and DELETE)”
+  “Block predicates explicitly block write operations (AFTER INSERT, AFTER UPDATE, BEFORE UPDATE, BEFORE DELETE) that violate the predicate”
+  ### Use Cases 
+  "A hospital can create a security policy that allows nurses to view data rows for their patients only."
+  "A bank can create a policy to restrict access to financial data rows based on an employee's business division or role in the company."
+
 ## Project Description
 
-We are extending the relational database we implemented in homework3 (that supports the shell command line interface and basic queries like SELECT, DELETE, CREATE TABLE, etc)
+We are extending the relational database we implemented in homework3 (that supports the shell command line interface and basic queries like SELECT, DELETE, CREATE TABLE, etc). We made a car sales DB with three roles and two tables (Cars, Users)It's not entirely query based, but you get the idea.
 ___
 
 ## Goal
